@@ -14,6 +14,7 @@ body {
     width: 50%;
     height: 100%; /* Ensure full height */
     overflow-y: auto; /* Allow scrolling */
+    height: fit-content;
 }
 .down {
     position: fixed;
@@ -23,8 +24,7 @@ body {
 }
 .info-container {
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 160px;
     padding: 10px;
     width: 50%;
     overflow: hidden; /* Prevent overflow */
@@ -98,9 +98,9 @@ z-index: 0;
 
 .selector-container{
     position: absolute;
-    top: 50%; /* Posizione verticale */
+    top: 170px;
     left: 50%; /* Posizione orizzontale */
-    transform: translate(-50%, -50%); /* Centra l'elemento */
+    transform: translateX(-50%); /* Centra l'elemento */
     width: 50px;
     z-index: 2;
 }
