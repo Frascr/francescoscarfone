@@ -221,10 +221,10 @@
             <div class="gallery-item" data-index="1">
                 <img src="./Grottesco/Grott-01.png" id="Grott01" data-index="1008">
                 <img src="./Grottesco/Grott-02.png" id="Grott02" data-index="1009"> 
-                <video autoplay muted loop playsinline preload="metadata" data-index="1010"><source src="./Grottesco/Grott-03.mp4"></video> 
+                <video autoplay muted loop playsinline preload="metadata" data-index="1010"><source src="./Grottesco/Grott-03.mp4"></video>
                 <img src="./Grottesco/Grott-04.png" id="Grott04" data-index="1011"> 
                 <img src="./Grottesco/Grott-05.png" id="Grott05" data-index="1012"> 
-                <video autoplay muted loop playsinline preload="metadata" data-index="1013"><source src="./Grottesco/Grott-06.mp4"></video>
+                <div class="videosform" style="position: relative;" data-index="1013"><video autoplay muted loop playsinline preload="metadata"><source src="./Grottesco/Grott-06.mp4"></video><a href="https://vimeo.com/1016766222" class="text-overlay">https://vimeo.com/1016766222</a></div>
                 <img src="./Grottesco/Grott-07.png" id="Grott07" data-index="1014"> 
                 <img src="./Grottesco/Grott-08.png" id="Grott08" data-index="1015"> 
             </div>
@@ -233,7 +233,7 @@
                 <img src="./Anthropology of Intelligences.C/Antro-02.jpg" id="Antr02" data-index="1017"> 
                 <img src="./Anthropology of Intelligences.C/Antro-03.png" id="Antr03" data-index="1018">  
                 <img src="./Anthropology of Intelligences.C/Antro-04.png" id="Antr05" data-index="1019">
-                <video autoplay muted loop playsinline preload="metadata" data-index="1020"><source src="./Anthropology of Intelligences.C/Antro-05.MP4"></video> 
+                <div class="videosform" style="position: relative;" data-index="1020"><video autoplay muted loop playsinline preload="metadata"><source src="./Anthropology of Intelligences.C/Antro-05.MP4"></video><a href="https://vimeo.com/1016775662" class="text-overlay">https://vimeo.com/1016775662</a></div>
                 <img src="./Anthropology of Intelligences.C/Antro-06.jpg" id="Antr06" data-index="1021"> 
                 <img src="./Anthropology of Intelligences.C/Antro-07.JPG" id="Antr07" data-index="1022"> 
             </div>
@@ -256,12 +256,12 @@
                 <img src="./Memetic Warfare/MW_09.jpg" data-index="1036"> 
             </div>
             <div class="gallery-item" data-index="5">
-                <video autoplay muted loop playsinline preload="metadata" data-index="1037"><source src="./BS Motions/Motion_01.mp4"></video>
-                <video autoplay muted loop playsinline preload="metadata" data-index="1038"><source src="./BS Motions/Motion_02.mp4"></video>
-                <video autoplay muted loop playsinline preload="metadata" data-index="1039"><source src="./BS Motions/Motion_03.mp4"></video>
-                <video autoplay muted loop playsinline preload="metadata" data-index="1040"><source src="./BS Motions/Motion_04.mp4"></video>
-                <video autoplay muted loop playsinline preload="metadata" data-index="1041"><source src="./BS Motions/Motion_05.mp4"></video>
-                <video autoplay muted loop playsinline preload="metadata" data-index="1042"><source src="./BS Motions/Motion_06.mp4"></video>
+                <div class="videosform" style="position: relative;" data-index="1037"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_01.mp4"></video><a href="https://vimeo.com/1016777231" class="text-overlay">https://vimeo.com/1016777231</a></div>
+                <div class="videosform" style="position: relative;" data-index="1038"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_02.mp4"></video><a href="https://vimeo.com/1016777253" class="text-overlay">https://vimeo.com/1016777253</a></div>
+                <div class="videosform" style="position: relative;" data-index="1039"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_03.mp4"></video><a href="https://vimeo.com/1016777289" class="text-overlay">https://vimeo.com/1016777289</a></div>
+                <div class="videosform" style="position: relative;" data-index="1040"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_04.mp4"></video><a href="https://vimeo.com/1016777328" class="text-overlay">https://vimeo.com/1016777328</a></div>
+                <div class="videosform" style="position: relative;" data-index="1041"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_05.mp4"></video><a href="https://vimeo.com/1016777357" class="text-overlay">https://vimeo.com/1016777357</a></div>
+                <div class="videosform" style="position: relative;" data-index="1042"><video autoplay muted loop playsinline preload="metadata"><source src="./BS Motions/Motion_06.mp4"></video><a href="https://vimeo.com/1016777366" class="text-overlay">https://vimeo.com/1016777366</a></div>
             
             </div>
             <div class="gallery-item" data-index="6">
@@ -355,7 +355,7 @@ $(document).ready(function() {
     // Quando un'immagine nella selezione viene cliccata
     $('.selector img, .selector video').on('click', function() {
     const mediaIndex = $(this).data('index'); // Ottieni l'indice dell'immagine o video cliccato
-    const target = $('.gallery img[data-index="' + mediaIndex + '"], .gallery video[data-index="' + mediaIndex + '"]'); // Trova l'immagine o video corrispondente nella galleria
+    const target = $('.gallery img[data-index="' + mediaIndex + '"], .gallery video[data-index="' + mediaIndex + '"], .gallery .videosform[data-index="' + mediaIndex + '"]'); // Trova l'immagine o video corrispondente nella galleria
 
     if (target.length) { // Controlla se l'immagine o video target esiste
         // Calcola la posizione rispetto al container della galleria

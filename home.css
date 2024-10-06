@@ -71,6 +71,7 @@ video{
  width: 100%;
 }
 
+
 .text, .team, .links, .year, .type {
 /* Auto layout */
 padding-bottom: 20px;
@@ -84,7 +85,6 @@ width: 100%;
 }
 
 .footer{
-
 padding-bottom: 0;
 /* Auto layout */
 display: flex;
@@ -155,4 +155,15 @@ a:hover{
 }
 .projectsresp span{
     background-color: white;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0%; /* Posiziona al centro verticalmente */
+    left: 0%; /* Posiziona al centro orizzontalmente */
+    background-color: white;
+    text-decoration: none; /* Rimuove la sottolineatura dal link */
+    z-index: 10;
+    padding-top: 10px;
+    overflow-x: visible;
 }
