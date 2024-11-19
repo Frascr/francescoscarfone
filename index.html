@@ -381,7 +381,7 @@
            $(document).ready(function() {
     function updateInfo() {
         const galleryItems = $('.gallery-item');
-        let currentIndex = -1;
+        let currentIndex = 0;
 
         // Controlla quale gallery item è attualmente visibile
         galleryItems.each(function(index) {
@@ -512,31 +512,58 @@ $(document).ready(function() {
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
-    const videoContainers = document.querySelectorAll('.video-container');
+    $(document).ready(function () {
+    $('.video-container').each(function (index) {
+        const $container = $(this);
+        const $video = $container.find('.lazy-video');
+        const $thumbnail = $container.find('.video-thumbnail');
 
-    videoContainers.forEach(container => {
-        const video = container.querySelector('.lazy-video');
-        const thumbnail = container.querySelector('.video-thumbnail');
+        // Funzione per mostrare la thumbnail e nascondere il video
+        const showThumbnail = () => {
+            $thumbnail.show();
+            $video.hide();
+        };
 
-        video.addEventListener('canplay', () => {
-            thumbnail.style.display = 'none'; // Nascondi la thumbnail
-            video.style.display = 'block'; // Mostra il video
-        });
+        // Funzione per mostrare il video e nascondere la thumbnail
+        const showVideo = () => {
+            $thumbnail.hide();
+            $video.show();
+        };
 
-        // Inizia a caricare il video solo quando è nel viewport
+        // Configura IntersectionObserver per ogni video-container
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    video.load(); // Carica il video
+                    console.log(`Contenitore ${index} visibile, carico il video`);
+                    $video[0].load(); // Carica il video
+                    observer.unobserve(entry.target); // Smette di osservare l'elemento
+                } else {
+                    console.log(`Contenitore ${index} non più visibile, ripristino thumbnail`);
+                    showThumbnail(); // Mostra di nuovo la thumbnail se esce dal viewport
                 }
             });
         });
 
-        observer.observe(container);
+        observer.observe(this);
+
+        // Nascondi la thumbnail solo quando il video è completamente pronto
+        $video.on('canplay', function () {
+            if (this.readyState >= 3) { // readyState 3 indica che il video è pronto
+                console.log(`Video ${index} pronto per la riproduzione`);
+                showVideo();
+            }
+        });
+
+        // Mostra di nuovo la thumbnail se il video non riesce a caricarsi
+        $video.on('error', function () {
+            console.error(`Errore nel caricamento del video ${index}`);
+            showThumbnail();
+        });
+
+        // Fallback per assicurare che la thumbnail riappaia se il video viene nascosto
+        showThumbnail(); // Inizialmente mostra sempre la thumbnail
     });
 });
-
 
 </script>
     </body>
