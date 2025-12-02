@@ -31,7 +31,7 @@ body {
 }
 .info-container {
     position: fixed;
-    top: 180px;
+    top: 240px;
     padding: 10px;
     width: 50%;
     overflow: hidden; /* Prevent overflow */
@@ -193,5 +193,69 @@ a:hover{
 
 .lazy-video{
     display: none;
+}
+
+/* ===== MODALITÀ FOCUS GALLERY (versione centrata) ===== */
+
+body.gallery-focus .projects,
+body.gallery-focus .down,
+body.gallery-focus .info-container,
+body.gallery-focus .selector-container,
+body.gallery-focus .projectsresp-container,
+body.gallery-focus .aboutopen {
+    display: none !important;
+}
+
+/* La gallery prende tutto lo schermo e scrolla in verticale */
+body.gallery-focus .gallery {
+    position: fixed;
+    inset: 0;              /* top/right/bottom/left: 0 */
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 999;
+    background-color: black;
+    padding: 3vh 0;
+    display: block;        /* niente flex qui */
+}
+
+/* Contenitore principale dei contenuti */
+body.gallery-focus .gallery .image-container {
+    width: 100%;
+}
+
+/* Ogni "blocco progetto" diventa una colonna centrata */
+body.gallery-focus .gallery .gallery-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centra orizzontalmente tutto il contenuto */
+}
+
+/* I contenitori dei video non forzano più il 100% */
+body.gallery-focus .gallery .video-container {
+    width: auto;
+}
+
+/* Immagini e video centrati, max 70% viewport */
+body.gallery-focus .gallery img,
+body.gallery-focus .gallery video {
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0vh auto;      /* centra orizzontalmente */
+}
+
+
+/* Cursore: gallery chiusa → freccia verso l'alto */
+body:not(.gallery-focus) .gallery {
+    cursor: n-resize; /* freccia verso l'alto / verticale */
+}
+
+/* Cursore: gallery aperta → freccia verso il basso */
+body.gallery-focus .gallery {
+    cursor: s-resize; /* freccia verso il basso / verticale */
 }
 
