@@ -705,16 +705,51 @@ $(document).ready(function() {
 });
 
 $(document).ready(function () {
-    // Toggle modalità focus cliccando dentro la gallery
     $('.gallery').on('click', function (e) {
         // Se clicco su un link (es. vimeo), NON togglo
         if ($(e.target).closest('a').length) {
             return;
         }
 
+        const $gallery = $('.gallery');
+
+        // Trovo l'elemento media cliccato: img o video, oppure il suo .video-container
+        const $clickedMedia = $(e.target).closest(
+            '.video-container, img[data-index], video[data-index]'
+        );
+
+        let mediaIndex = null;
+        if ($clickedMedia.length) {
+            mediaIndex = $clickedMedia.data('index');
+        }
+
+        // Toggle modalità full / normale
         $('body').toggleClass('gallery-focus');
+
+        // Se ho un elemento di riferimento, dopo il reflow lo ricentro
+        if (mediaIndex != null) {
+            setTimeout(function () {
+                const $target = $(
+                    '.gallery .video-container[data-index="' + mediaIndex + '"], ' +
+                    '.gallery img[data-index="' + mediaIndex + '"], ' +
+                    '.gallery video[data-index="' + mediaIndex + '"]'
+                ).first();
+
+                if ($target.length) {
+                    // Lo porto circa al centro della viewport della gallery
+                    const targetTop = $target.position().top;
+                    const newScroll =
+                        targetTop +
+                        $gallery.scrollTop() -
+                        ($gallery.height() - $target.outerHeight()) / 2;
+
+                    $gallery.scrollTop(newScroll);
+                }
+            }, 0); // timeout 0 per aspettare il ridisegno del layout
+        }
     });
 });
+
 
 </script>
     </body>

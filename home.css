@@ -251,11 +251,11 @@ body.gallery-focus .gallery video {
 
 /* Cursore: gallery chiusa → freccia verso l'alto */
 body:not(.gallery-focus) .gallery {
-    cursor: n-resize; /* freccia verso l'alto / verticale */
+    cursor: zoom-in; /* freccia verso l'alto / verticale */
 }
 
 /* Cursore: gallery aperta → freccia verso il basso */
 body.gallery-focus .gallery {
-    cursor: s-resize; /* freccia verso il basso / verticale */
+    cursor: zoom-out; /* freccia verso il basso / verticale */
 }
 
